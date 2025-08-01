@@ -8,44 +8,54 @@ class Tugasflutter1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("PPKD Batch 3"),
-        backgroundColor: Colors.amber,
+        backgroundColor: const Color.fromARGB(255, 16, 206, 89),
         actions: [Icon(Icons.favorite), Icon(Icons.message)],
         centerTitle: true,
       ),
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add),
+        child: Icon(Icons.location_on),
       ),
 
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
 
         children: [
-          Text("Saya", style: TextStyle(fontSize: 80, color: Colors.black)),
+          Text(
+            "Saya seorang komposer dan musisi handal, yang terus berkarya di dunia yang kadang kidding ini.",
+            style: TextStyle(
+              fontSize: 20,
+              color: const Color.fromARGB(255, 3, 122, 131),
+            ),
+          ),
           SizedBox(height: 8),
 
-        Text(
-          "Hanna",
-          style: TextStyle(
-            fontSize: 80,
-            color: const Color.fromARGB(255, 182, 182, 11),
-            fontFamily: "PlaywriteHu"
+          Text(
+            "Hanna Dea Sabrina",
+            style: TextStyle(
+              fontSize: 30,
+              color: const Color.fromARGB(255, 182, 182, 11),
+              fontFamily: "PlaywriteHu",
+            ),
           ),
-        ),
-        Text(
-          "Hanna",
-          style: TextStyle(
-            fontSize: 80,
-            fontStyle: FontStyle.italic,
-            fontWeight: FontWeight.bold,
-        ),
-        ),
-        Row(
-          children: [Text("Nama :"), SizedBox(width: 40,), Text("Hanna")],
-        ),
-      ],
-    ),
-  );
-}
+          Text(
+            "Jakarta",
+            style: TextStyle(
+              fontSize: 30,
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Row(
+            children: [
+              Text("Nama :"),
+              SizedBox(width: 40),
+              Text("Hanna Pacar Sumin"),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }
