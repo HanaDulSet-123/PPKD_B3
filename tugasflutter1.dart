@@ -47,13 +47,7 @@ class Tugasflutter1 extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Row(
-            children: [
-              Text("Nama :"),
-              SizedBox(width: 40),
-              Text("Hanna Pacar Sumin"),
-            ],
-          ),
+          Row(children: [Text("Nama :"), SizedBox(width: 40), Text("Hanna")]),
         ],
       ),
     );
