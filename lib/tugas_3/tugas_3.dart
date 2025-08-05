@@ -62,12 +62,12 @@ class Tugas3 extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(
                         16,
-                      ), // optional, biar teksnya tidak nempel ke pinggir
+                      ), 
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 231, 160, 6),
                         borderRadius: BorderRadius.circular(
                           12,
-                        ), // isi dengan nilai radius
+                        ), 
                       ),
                       child: Text(
                         'Biodata',
@@ -80,19 +80,19 @@ class Tugas3 extends StatelessWidget {
                     ),
                   ],
                 ),
-                // Stack di dalam grid item
+                
                 Stack(
                   alignment: Alignment.center,
                   children: [
                     Container(
                       padding: EdgeInsets.all(
                         16,
-                      ), // optional, biar teksnya tidak nempel ke pinggir
+                      ), 
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 57, 121, 238),
                         borderRadius: BorderRadius.circular(
                           12,
-                        ), // isi dengan nilai radius
+                        ), 
                       ),
                       child: Text(
                         'Berkas',
@@ -111,12 +111,12 @@ class Tugas3 extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(
                         16,
-                      ), // optional, biar teksnya tidak nempel ke pinggir
+                      ), 
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 62, 201, 69),
                         borderRadius: BorderRadius.circular(
                           12,
-                        ), // isi dengan nilai radius
+                        ), 
                       ),
                       child: Text(
                         'Alamat',
@@ -135,12 +135,12 @@ class Tugas3 extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(
                         20,
-                      ), // optional, biar teksnya tidak nempel ke pinggir
+                      ), 
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(162, 4, 161, 182),
                         borderRadius: BorderRadius.circular(
                           12,
-                        ), // isi dengan nilai radius
+                        ), 
                       ),
                       child: Text(
                         'Dokum',
@@ -160,12 +160,12 @@ class Tugas3 extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(
                         16,
-                      ), // optional, biar teksnya tidak nempel ke pinggir
+                      ), 
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 17, 19, 179),
                         borderRadius: BorderRadius.circular(
                           12,
-                        ), // isi dengan nilai radius
+                        ), 
                       ),
                       child: Text(
                         'PDF',
@@ -185,12 +185,12 @@ class Tugas3 extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(
                         16,
-                      ), // optional, biar teksnya tidak nempel ke pinggir
+                      ), 
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 161, 27, 161),
                         borderRadius: BorderRadius.circular(
                           12,
-                        ), // isi dengan nilai radius
+                        ), 
                       ),
                       child: Text(
                         'Menu',
