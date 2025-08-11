@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ppkd_b_3/tugas_7/bottomNavigation.dart';
 
 class Tugas6 extends StatefulWidget {
   const Tugas6({super.key});
@@ -9,6 +10,31 @@ class Tugas6 extends StatefulWidget {
 
 class _Tugas6State extends State<Tugas6> {
   final _formKey = GlobalKey<FormState>();
+
+  void _loginSuccess() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Login Berhasil"),
+          content: const Text("Selamat datang!"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => buttomnavigationTugas(),
+                  ),
+                );
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,120 +86,149 @@ class _Tugas6State extends State<Tugas6> {
                     key: _formKey,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            TextFormField(
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(24),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TextFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                              hintText: "Masukan Email",
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Email not found";
+                              }
+                              if (!value.contains("@")) {
+                                return "Email is invalid";
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 9),
+                          const Text(
+                            'Password',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ),
+                          TextFormField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                              hintText: "Masukkan Password",
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Password not found";
+                              } else if (value.length < 6) {
+                                return "Password must be at least 6 characters";
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 1),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 210),
+                            child: Text(
+                              "Forgot Password?",
+                              style: TextStyle(color: Colors.deepOrange[700]),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.deepOrange,
+                                side: const BorderSide(
+                                  color: Colors.orangeAccent,
+                                  width: 2,
                                 ),
-                                hintText: "Masukan Email",
-                              ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return "Email not found";
-                                }
-                                if (!value.contains("@")) {
-                                  return "Email is empaty";
-                                }
-                                return null;
-                              },
-                            ),
-                            SizedBox(height: 9),
-                            const Text(
-                              'Email Address',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                              ),
-                            ),
-                            TextFormField(
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(24),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
                                 ),
-                                hintText: "Masukkan Password",
                               ),
-
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return "Password not found";
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  _loginSuccess();
                                 }
-                                if (!value.contains("@")) {
-                                  return "Confirm Password Not Found";
-                                }
-                                return null;
                               },
-                            ),
-
-                            const SizedBox(height: 12),
-
-                            const SizedBox(height: 1),
-                            Padding(
-                              padding: EdgeInsets.only(left: 210),
-                              child: Text(
-                                "Forgot Password?",
+                              child: const Text(
+                                "Sign In",
                                 style: TextStyle(
-                                  color: const Color.fromARGB(255, 221, 103, 6),
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
                                 ),
                               ),
                             ),
-                            SizedBox(height: 25),
-
-                            SizedBox(
-                              width: double.infinity,
-                              height: 55,
-                              child: ElevatedButton(
+                          ),
+                          const SizedBox(height: 20),
+                          Center(
+                            child: RichText(
+                              text: const TextSpan(
+                                text: "Or Sign In with",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton.icon(
+                                icon: const Icon(
+                                  Icons.g_mobiledata,
+                                  color: Color.fromARGB(255, 156, 51, 51),
+                                ),
+                                label: const Text("Google"),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.deepOrange,
-                                  side: const BorderSide(
-                                    color: Colors.orangeAccent,
-                                    width: 2,
-                                  ),
-
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
+                                  backgroundColor: const Color.fromARGB(
+                                    255,
+                                    243,
+                                    240,
+                                    240,
                                   ),
                                 ),
-
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: const Text("Login Berhasil"),
-                                          content: const Text(
-                                            "Selamat datang!",
-                                          ),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text("OK"),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
+                                    _loginSuccess();
                                   }
                                 },
-
-                                child: const Text(
-                                  "Sign In",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 250, 248, 247),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                              ),
+                              const SizedBox(width: 10),
+                              ElevatedButton.icon(
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    _loginSuccess();
+                                  }
+                                },
+                                icon: const Icon(
+                                  Icons.facebook,
+                                  color: Color.fromARGB(255, 33, 135, 202),
+                                ),
+                                label: const Text("Facebook"),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color.fromARGB(
+                                    255,
+                                    243,
+                                    240,
+                                    240,
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
