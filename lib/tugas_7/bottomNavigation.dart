@@ -16,10 +16,10 @@ class _buttomnavigationTugasState extends State<buttomnavigationTugas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 177, 116, 116),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 196, 105, 105),
         currentIndex: _selectedIndex,
         selectedItemColor: Color(0xff21BDCA),
         unselectedItemColor: Colors.grey,

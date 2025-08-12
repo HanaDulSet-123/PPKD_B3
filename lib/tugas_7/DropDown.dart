@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ppkd_b_3/tugas4/tugas_4.dart';
 
 class Dropdown extends StatefulWidget {
   const Dropdown({super.key});
@@ -13,7 +14,7 @@ class _DropdownTugas extends State<Dropdown> {
   String? dropdownSelect;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: Column(
         children: [
           Text("Drop Down"),
@@ -27,9 +28,17 @@ class _DropdownTugas extends State<Dropdown> {
                   return DropdownMenuItem(value: value, child: Text(value));
                 }).toList(),
             onChanged: (value) {
-              setState(() {});
               dropdownSelect = value;
             },
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Tugas4()),
+              );
+            },
+            child: Text("Tugas 4"),
           ),
         ],
       ),

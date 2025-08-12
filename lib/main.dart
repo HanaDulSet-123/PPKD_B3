@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_3/tugas_6/tugas6.dart';
+import 'package:ppkd_b_3/tugas_7/tugas7.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyanAccent),
       ),
-      home: Tugas6(),
+      home: Tugas7(),
       // initialRoute: '/login',
       // routes: {'/login': (context) => Tugas6()},
 

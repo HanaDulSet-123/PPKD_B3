@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_3/tugas_7/CheckBoxTugas.dart';
-import 'package:ppkd_b_3/tugas_7/DatePickerTugas.dart';
-import 'package:ppkd_b_3/tugas_7/DropDown.dart';
-import 'package:ppkd_b_3/tugas_7/TimePickerTugas.dart';
+import 'package:ppkd_b_3/tugas_%209/tugas_9.dart';
+import 'package:ppkd_b_3/tugas_7/checkboxtugas.dart';
+import 'package:ppkd_b_3/tugas_7/datepickertugas.dart';
+import 'package:ppkd_b_3/tugas_7/dropdown.dart';
 import 'package:ppkd_b_3/tugas_7/switchpage.dart';
-
+import 'package:ppkd_b_3/tugas_7/timepickertugas.dart';
 
 class Tugas7 extends StatefulWidget {
   const Tugas7({super.key});
@@ -21,6 +21,7 @@ class _Tugas7State extends State<Tugas7> {
     "Pilih Kategori Produk",
     "Pilih Tanggal Lahir",
     "Atur Pengingat",
+    "Data Produk",
   ];
 
   static const List<Widget> _widgetOption = <Widget>[
@@ -29,6 +30,7 @@ class _Tugas7State extends State<Tugas7> {
     Dropdown(),
     DatePickerTugas(),
     TimepickerTugas(),
+    listminuman(),
   ];
 
   void onItemTap(int index) {
@@ -44,9 +46,12 @@ class _Tugas7State extends State<Tugas7> {
       appBar: AppBar(
         title: Text(
           _titles[_selectedIndexDrawer],
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: const Color.fromARGB(255, 0, 0, 0),
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        backgroundColor: const Color.fromARGB(255, 100, 199, 34),
+        backgroundColor: const Color.fromARGB(255, 138, 184, 108),
       ),
       body: Center(child: _widgetOption[_selectedIndexDrawer]),
       // appBar: AppBar
@@ -62,6 +67,7 @@ class _Tugas7State extends State<Tugas7> {
             ListTile(title: Text("Drop Down"), onTap: () => onItemTap(2)),
             ListTile(title: Text("Datepicker"), onTap: () => onItemTap(3)),
             ListTile(title: Text("Timepicker"), onTap: () => onItemTap(4)),
+            ListTile(title: Text("List Produk"), onTap: () => onItemTap(5)),
           ],
         ),
       ),
