@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/tugas_%209/tugas_9.dart';
+import 'package:ppkd_b_3/tugas_10/home_a.dart';
 import 'package:ppkd_b_3/tugas_7/checkboxtugas.dart';
 import 'package:ppkd_b_3/tugas_7/datepickertugas.dart';
 import 'package:ppkd_b_3/tugas_7/dropdown.dart';
@@ -22,6 +23,7 @@ class _Tugas7State extends State<Tugas7> {
     "Pilih Tanggal Lahir",
     "Atur Pengingat",
     "Data Produk",
+    "Tugas 10",
   ];
 
   static const List<Widget> _widgetOption = <Widget>[
@@ -31,6 +33,7 @@ class _Tugas7State extends State<Tugas7> {
     DatePickerTugas(),
     TimepickerTugas(),
     listminuman(),
+    Tugas10HomeA(),
   ];
 
   void onItemTap(int index) {
@@ -68,6 +71,7 @@ class _Tugas7State extends State<Tugas7> {
             ListTile(title: Text("Datepicker"), onTap: () => onItemTap(3)),
             ListTile(title: Text("Timepicker"), onTap: () => onItemTap(4)),
             ListTile(title: Text("List Produk"), onTap: () => onItemTap(5)),
+            ListTile(title: Text("Pendaftaran"), onTap: () => onItemTap(6)),
           ],
         ),
       ),
