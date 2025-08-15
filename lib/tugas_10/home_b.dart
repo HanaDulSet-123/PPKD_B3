@@ -16,6 +16,7 @@ class Tugas10HomeB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Konfirmasi')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
