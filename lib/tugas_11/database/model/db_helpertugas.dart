@@ -64,4 +64,20 @@ class DbHelper {
     final List<Map<String, dynamic>> results = await db.query('menu');
     return results.map((e) => MenuModel.fromMap(e)).toList();
   }
+
+  static Future<void> updateMenu(MenuModel user) async {
+    final db = await databaseHelper();
+    await db.update(
+      'users',
+      user.toMap(),
+      where: 'id = ?',
+      whereArgs: [user.id],
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  static Future<void> deleteMenu(int id) async {
+    final db = await databaseHelper();
+    await db.delete('menu', where: 'id = ?', whereArgs: [id]);
+  }
 }

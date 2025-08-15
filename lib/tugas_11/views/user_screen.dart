@@ -77,10 +77,81 @@ class _MenuMakananState extends State<MenuMakanan> {
               shrinkWrap: true,
               itemCount: menu.length,
               itemBuilder: (BuildContext context, int index) {
-                final dataUserLogin = menu[index];
+                final dataMenu = menu[index];
                 return ListTile(
-                  title: Text(dataUserLogin.name),
-                  subtitle: Text(dataUserLogin.jumlah_pesanan.toString()),
+                  title: Text(dataMenu.name),
+                  subtitle: Text(dataMenu.jumlah_pesanan.toString()),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder:
+                                (context) => AlertDialog(
+                                  title: Text('Edit Data'),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      TextFormConst(
+                                        controller:
+                                            nameController
+                                              ..text = dataMenu.name,
+                                        hintText: 'Nama',
+                                      ),
+                                      SizedBox(height: 12),
+                                      TextFormConst(
+                                        controller:
+                                            nameController
+                                              ..text = dataMenu.name,
+                                        hintText: 'Nama',
+                                      ),
+                                      SizedBox(height: 12),
+
+                                      TextFormConst(
+                                        controller:
+                                            pesananController
+                                              ..text = dataMenu.jumlah_pesanan,
+                                        hintText: 'Jumlah Pesanan',
+                                      ),
+                                    ],
+                                  ),
+                                  actions: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        final MenuMakanan = MenuModel(
+                                          id: dataMenu.id!,
+                                          name: nameController.text,
+                                          jumlah_pesanan:
+                                              pesananController.text,
+                                          city: cityController.text.trim(),
+                                        );
+                                        DbHelper.updateMenu(MenuMakanan);
+                                        getMenu();
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('Simpan'),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text('Batal'),
+                                    ),
+                                  ],
+                                ),
+                          );
+                        },
+                        icon: Icon(Icons.edit),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          await DbHelper.deleteMenu(dataMenu.id!);
+                          await getMenu();
+                        },
+                        icon: Icon(Icons.delete),
+                      ),
+                    ],
+                  ),
                 );
               },
             ),

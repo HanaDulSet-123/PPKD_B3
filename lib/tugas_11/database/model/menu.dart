@@ -2,13 +2,20 @@
 import 'dart:convert';
 
 class MenuModel {
+  final int? id;
   final String jumlah_pesanan;
   final String name;
   final String? city;
-  MenuModel({required this.jumlah_pesanan, required this.name, this.city});
+  MenuModel({
+    this.id,
+    required this.jumlah_pesanan,
+    required this.name,
+    this.city,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'jumlah_pesanan': jumlah_pesanan,
       'name': name,
       'city': city,
@@ -17,6 +24,7 @@ class MenuModel {
 
   factory MenuModel.fromMap(Map<String, dynamic> map) {
     return MenuModel(
+      id: map['id'] as int,
       jumlah_pesanan: map['jumlah_pesanan'] as String,
       name: map['name'] as String,
       city: map['city'] != null ? map['city'] as String : null,
