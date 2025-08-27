@@ -16,13 +16,13 @@ class _buttomnavigationTugasState extends State<buttomnavigationTugas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 177, 116, 116),
+      backgroundColor: const Color.fromARGB(255, 255, 254, 254),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 196, 105, 105),
+        backgroundColor: const Color(0xFF67C090),
         currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xff21BDCA),
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: Color(0xff44444E),
+        unselectedItemColor: const Color(0xFF715A5A),
         onTap: (int index) {
           setState(() {
             _selectedIndex = index;
@@ -44,6 +44,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16),
+
       child: ListView(
         children: [
           Text(
@@ -51,7 +52,7 @@ class AboutPage extends StatelessWidget {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 37, 93, 212),
+              color: Color.fromARGB(255, 0, 188, 235),
             ),
           ),
 

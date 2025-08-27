@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/tugas14/view/get_api.dart';
+import 'package:ppkd_b_3/tugas_6/tugas6.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyanAccent),
       ),
-      home: Day23GetAPIScreen(),
+      home: Tugas6(),
       // initialRoute: '/login',
       // routes: {'/login': (context) => Tugas6()},
 

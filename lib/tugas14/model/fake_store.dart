@@ -12,7 +12,7 @@ class GetUserModel {
   String title;
   double price;
   String description;
-  Category category;
+  String category;
   String image;
   Rating rating;
 
@@ -31,7 +31,7 @@ class GetUserModel {
     title: json["title"],
     price: json["price"]?.toDouble(),
     description: json["description"],
-    category: categoryValues.map[json["category"]]!,
+    category: json["category"],
     image: json["image"],
     rating: Rating.fromJson(json["rating"]),
   );
@@ -41,20 +41,20 @@ class GetUserModel {
     "title": title,
     "price": price,
     "description": description,
-    "category": categoryValues.reverse[category],
+    "category": category,
     "image": image,
     "rating": rating.toJson(),
   };
 }
 
-enum Category { ELECTRONICS, JEWELERY, MEN_S_CLOTHING, WOMEN_S_CLOTHING }
+// enum Category { ELECTRONICS, JEWELERY, MEN_S_CLOTHING, WOMEN_S_CLOTHING }
 
-final categoryValues = EnumValues({
-  "electronics": Category.ELECTRONICS,
-  "jewelery": Category.JEWELERY,
-  "men's clothing": Category.MEN_S_CLOTHING,
-  "women's clothing": Category.WOMEN_S_CLOTHING,
-});
+// final categoryValues = EnumValues({
+//   "electronics": Category.ELECTRONICS,
+//   "jewelery": Category.JEWELERY,
+//   "men's clothing": Category.MEN_S_CLOTHING,
+//   "women's clothing": Category.WOMEN_S_CLOTHING,
+// });
 
 class Rating {
   double rate;

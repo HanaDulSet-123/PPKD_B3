@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ppkd_b_3/tugas14/view/get_api.dart';
 import 'package:ppkd_b_3/tugas_%209/tugas_9.dart';
 import 'package:ppkd_b_3/tugas_10/home_a.dart';
 import 'package:ppkd_b_3/tugas_11/views/user_screen.dart';
@@ -26,6 +27,7 @@ class _Tugas7State extends State<Tugas7> {
     "Data Produk",
     "Tugas 10",
     "Menu Makanan",
+    "Store",
   ];
 
   static const List<Widget> _widgetOption = <Widget>[
@@ -37,6 +39,7 @@ class _Tugas7State extends State<Tugas7> {
     listminuman(),
     Tugas10HomeA(),
     MenuMakanan(),
+    Day23GetAPIScreen(),
   ];
 
   void onItemTap(int index) {
@@ -55,16 +58,38 @@ class _Tugas7State extends State<Tugas7> {
           style: TextStyle(
             color: const Color.fromARGB(255, 0, 0, 0),
             fontWeight: FontWeight.bold,
+            height: 30,
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 138, 184, 108),
+        backgroundColor: const Color(0xFF67C090),
       ),
       body: Center(child: _widgetOption[_selectedIndexDrawer]),
-      // appBar: AppBar
-      // (backgroundColor: const Color.fromARGB(255, 165, 137, 240)),
+
       drawer: Drawer(
         child: ListView(
+          padding: EdgeInsets.zero,
           children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(color: Color(0xFF67C090)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundImage: AssetImage("assets/images/uniform.jpeg"),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "Welcome",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             ListTile(
               title: Text("Syarat&Ketentuan"),
               onTap: () => onItemTap(0),
@@ -76,6 +101,7 @@ class _Tugas7State extends State<Tugas7> {
             ListTile(title: Text("List Produk"), onTap: () => onItemTap(5)),
             ListTile(title: Text("Pendaftaran"), onTap: () => onItemTap(6)),
             ListTile(title: Text("Menu Makanan"), onTap: () => onItemTap(7)),
+            ListTile(title: Text("Store"), onTap: () => onItemTap(8)),
           ],
         ),
       ),

@@ -44,17 +44,35 @@ class _Tugas6State extends State<Tugas6> {
           children: [
             Container(
               height: MediaQuery.of(context).size.height * 0.25,
-              color: const Color.fromARGB(255, 150, 144, 144),
               alignment: Alignment.center,
-              child: const Text(
-                'PPKD',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2,
+              decoration: const BoxDecoration(
+                color: Color(0xFF154d71),
+                image: DecorationImage(
+                  image: AssetImage('assets/logo.jpeg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.5), // background transparan
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Text(
+                  'PPKD',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                    color: Colors.white, // biar kontras dengan background
+                  ),
                 ),
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.all(25),
               child: Column(
@@ -136,7 +154,7 @@ class _Tugas6State extends State<Tugas6> {
                             padding: const EdgeInsets.only(left: 210),
                             child: Text(
                               "Forgot Password?",
-                              style: TextStyle(color: Colors.deepOrange[700]),
+                              style: TextStyle(color: Color(0xFF1C6EA4)),
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -145,9 +163,9 @@ class _Tugas6State extends State<Tugas6> {
                             height: 50,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.deepOrange,
+                                backgroundColor: Color(0xFF1C6EA4),
                                 side: const BorderSide(
-                                  color: Colors.orangeAccent,
+                                  color: Color(0xff415E72),
                                   width: 2,
                                 ),
                                 shape: RoundedRectangleBorder(
