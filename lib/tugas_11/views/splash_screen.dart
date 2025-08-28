@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/extention/extention.dart';
-import 'package:ppkd_b_3/tugas_10/home_a.dart';
-import 'package:ppkd_b_3/tugas_11/utils/preference/shared_preference.dart';
 import 'package:ppkd_b_3/tugas_11/utils/app_Image.dart';
+import 'package:ppkd_b_3/tugas_11/utils/preference/shared_preference.dart';
+import 'package:ppkd_b_3/tugas_15/view/login_api_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (isLogin == true) {
         context.pushReplacementNamed(AppImage.chikkensteak);
       } else {
-        context.push(Tugas10HomeA());
+        context.push(LoginAPIScreen());
       }
     });
   }
