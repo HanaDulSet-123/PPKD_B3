@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ppkd_b_3/tugas_7/tugas7.dart';
 
-class buttomnavigationTugas extends StatefulWidget {
-  const buttomnavigationTugas({super.key});
+class buttomnavigation extends StatefulWidget {
+  const buttomnavigation({super.key});
 
   @override
-  State<buttomnavigationTugas> createState() => _buttomnavigationTugasState();
+  State<buttomnavigation> createState() => _buttomnavigationState();
 }
 
-class _buttomnavigationTugasState extends State<buttomnavigationTugas> {
+class _buttomnavigationState extends State<buttomnavigation> {
+  static const id = "/bottomNav";
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [const Tugas7(), const AboutPage()];

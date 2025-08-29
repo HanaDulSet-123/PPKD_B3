@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:ppkd_b_3/extention/extention.dart';
-
-import 'package:ppkd_b_3/tugas_11/database/model/db_helpertugas.dart';
 import 'package:ppkd_b_3/tugas_11/utils/preference/shared_preference.dart';
+import 'package:ppkd_b_3/tugas_15/api/register_user.dart';
+import 'package:ppkd_b_3/tugas_15/model/register_model.dart';
+import 'package:ppkd_b_3/tugas_15/view/dashboard.dart';
 import 'package:ppkd_b_3/tugas_15/view/post_api_screen.dart';
-import 'package:ppkd_b_3/tugas_7/bottomNavigation.dart';
 
 class LoginAPIScreen extends StatefulWidget {
   const LoginAPIScreen({super.key});
@@ -18,6 +17,10 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isVisibility = false;
+  RegisterUserModel? user;
+  String? errorMessage;
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: Stack(children: [buildBackground(), buildLayer()]));
@@ -26,22 +29,57 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
   login() async {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
+
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Email dan Password tidak boleh kosong")),
       );
-      // isLoading = false;
-
       return;
     }
-    final userData = await DbHelper.loginUser(email, password);
-    if (userData != null) {
-      Preference.saveLogin();
-      context.pushReplacementNamed(buttomnavigationTugas.id);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Email atau Password salah")),
+
+    setState(() {
+      isLoading = true;
+      errorMessage = null;
+    });
+
+    try {
+      final result = await RegistrationAPI.loginUser(
+        email: email,
+        password: password,
       );
+
+      setState(() {
+        user = result;
+      });
+
+      // Simpan token dengan benar
+      if (user?.data.token != null) {
+        await Preference.saveToken(user!.data.token);
+        await Preference.saveLogin();
+
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text("Login berhasil")));
+
+        // Navigate dengan menghapus semua screen sebelumnya
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => Dashboard()),
+          (route) => false,
+        );
+      }
+    } catch (e) {
+      print("Login error: $e");
+      setState(() {
+        errorMessage = e.toString();
+      });
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(errorMessage.toString())));
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
@@ -164,7 +202,7 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "assets/images/icon_google.png",
+                        "assets/images/google.png",
                         height: 16,
                         width: 16,
                       ),
@@ -213,10 +251,10 @@ class _LoginAPIScreenState extends State<LoginAPIScreen> {
       height: double.infinity,
       width: double.infinity,
       decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
-          fit: BoxFit.cover,
-        ),
+        // image: DecorationImage(
+        //   image: AssetImage("assets/images/background.png"),
+        //   fit: BoxFit.cover,
+        // ),
       ),
     );
   }

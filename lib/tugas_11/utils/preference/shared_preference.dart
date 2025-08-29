@@ -4,36 +4,32 @@ class Preference {
   static const String loginKey = "Login";
   static const String tokenKey = "token";
 
-  static void saveLogin() async {
+  static Future<void> saveLogin() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(loginKey, true);
   }
 
-  static void saveToken(String token) async {
+  static Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(tokenKey, token);
+    await prefs.setString(tokenKey, "Bearer $token"); // Tambahkan Bearer prefix
   }
 
-  static getLogin() async {
-    print(loginKey);
+  static Future<bool?> getLogin() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.getBool(loginKey);
     return prefs.getBool(loginKey);
   }
 
-  static getToken() async {
-    print(tokenKey);
+  static Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.getBool(tokenKey);
-    return prefs.getBool(tokenKey);
+    return prefs.getString(tokenKey);
   }
 
-  static void removeLogin() async {
+  static Future<void> removeLogin() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(loginKey);
   }
 
-  static void removeToken() async {
+  static Future<void> removeToken() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(tokenKey);
   }

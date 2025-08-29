@@ -1,8 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:ppkd_b_3/tugas_15/view/post_api_screen.dart';
 import 'package:ppkd_b_3/tugas_7/bottomNavigation.dart';
 
 class Tugas6 extends StatefulWidget {
   const Tugas6({super.key});
+  static const id = "/login";
 
   @override
   State<Tugas6> createState() => _Tugas6State();
@@ -23,9 +26,7 @@ class _Tugas6State extends State<Tugas6> {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => buttomnavigationTugas(),
-                  ),
+                  MaterialPageRoute(builder: (context) => buttomnavigation()),
                 );
               },
               child: const Text("OK"),
@@ -47,10 +48,10 @@ class _Tugas6State extends State<Tugas6> {
               alignment: Alignment.center,
               decoration: const BoxDecoration(
                 color: Color(0xFF154d71),
-                image: DecorationImage(
-                  image: AssetImage('assets/logo.jpeg'),
-                  fit: BoxFit.cover,
-                ),
+                // image: DecorationImage(
+                //   image: AssetImage('assets/Wattpad.jpg'),
+                //   fit: BoxFit.cover,
+                // ),
               ),
               child: Container(
                 padding: const EdgeInsets.symmetric(
@@ -150,11 +151,43 @@ class _Tugas6State extends State<Tugas6> {
                             },
                           ),
                           const SizedBox(height: 1),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 210),
-                            child: Text(
-                              "Forgot Password?",
-                              style: TextStyle(color: Color(0xFF1C6EA4)),
+                          Text.rich(
+                            TextSpan(
+                              text: 'Have an account?',
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'Sign Up                           ',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFF1C6EA4),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  recognizer:
+                                      TapGestureRecognizer()
+                                        ..onTap = () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder:
+                                                  (context) => PostApiScreen(),
+                                            ),
+                                          );
+                                        },
+                                ),
+
+                                TextSpan(
+                                  text: 'Forgot Password',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFF1C6EA4),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           const SizedBox(height: 20),

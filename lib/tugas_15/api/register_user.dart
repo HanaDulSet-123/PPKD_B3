@@ -6,13 +6,13 @@ import 'package:ppkd_b_3/tugas_15/api/endpoin/endpoint.dart';
 import 'package:ppkd_b_3/tugas_15/model/get_user_model.dart';
 import 'package:ppkd_b_3/tugas_15/model/register_model.dart';
 
-class AuthenticationAPI {
+class RegistrationAPI {
   static Future<RegisterUserModel> registerUser({
     required String email,
     required String password,
     required String name,
   }) async {
-    final url = Uri.parse(Endpoint().register);
+    final url = Uri.parse(Endpoint.register);
     final response = await http.post(
       url,
       body: {"name": name, "email": email, "password": password},
@@ -46,33 +46,45 @@ class AuthenticationAPI {
 
   static Future<GetUserModel15> updateUser({required String name}) async {
     final url = Uri.parse(Endpoint.profile);
-    final token = await .getToken();
+    final token = await Preference.getToken();
 
-    final response = await http.post(
+    final response = await http.put(
       url,
+      
       body: {"name": name},
-      headers: {"Accept": "application/json", "Authorization": token},
+      headers: {"Accept": "application/json", "Authorization": token ?? ""},
     );
     if (response.statusCode == 200) {
       return GetUserModel15.fromJson(json.decode(response.body));
     } else {
       final error = json.decode(response.body);
-      throw Exception(error["message"] ?? "Register gagal");
+      throw Exception(error["message"] ?? "Update gagal");
     }
   }
 
   static Future<GetUserModel15> getProfile() async {
     final url = Uri.parse(Endpoint.profile);
-    final token = await PreferenceHandler.getToken();
+    final token = await Preference.getToken();
+
+    print("Token: $token"); // Debug token
+
     final response = await http.get(
       url,
-      headers: {"Accept": "application/json", "Authorization": token},
+      headers: {
+        "Accept": "application/json",
+        "Authorization": token ?? "", // Pastikan tidak null
+      },
     );
+
+    print("Response Status: ${response.statusCode}");
+    print("Response Body: ${response.body}");
+
     if (response.statusCode == 200) {
       return GetUserModel15.fromJson(json.decode(response.body));
     } else {
       final error = json.decode(response.body);
-      throw Exception(error["message"] ?? "Register gagal");
+      print("API Error: $error");
+      throw Exception(error["message"] ?? "Gagal mengambil profil");
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:ppkd_b_3/tugas14/view/get_api.dart';
 import 'package:ppkd_b_3/tugas_%209/tugas_9.dart';
 import 'package:ppkd_b_3/tugas_10/home_a.dart';
 import 'package:ppkd_b_3/tugas_11/views/user_screen.dart';
+import 'package:ppkd_b_3/tugas_15/view/dashboard.dart';
 import 'package:ppkd_b_3/tugas_7/checkboxtugas.dart';
 import 'package:ppkd_b_3/tugas_7/datepickertugas.dart';
 import 'package:ppkd_b_3/tugas_7/dropdown.dart';
@@ -28,6 +29,7 @@ class _Tugas7State extends State<Tugas7> {
     "Tugas 10",
     "Menu Makanan",
     "Store",
+    "Profile",
   ];
 
   static const List<Widget> _widgetOption = <Widget>[
@@ -40,6 +42,7 @@ class _Tugas7State extends State<Tugas7> {
     Tugas10HomeA(),
     MenuMakanan(),
     Day23GetAPIScreen(),
+    Dashboard(),
   ];
 
   void onItemTap(int index) {
@@ -102,6 +105,7 @@ class _Tugas7State extends State<Tugas7> {
             ListTile(title: Text("Pendaftaran"), onTap: () => onItemTap(6)),
             ListTile(title: Text("Menu Makanan"), onTap: () => onItemTap(7)),
             ListTile(title: Text("Store"), onTap: () => onItemTap(8)),
+            ListTile(title: Text("Profile"), onTap: () => onItemTap(9)),
           ],
         ),
       ),

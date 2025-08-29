@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppkd_b_3/day_25/api/register_user.dart';
-import 'package:ppkd_b_3/day_25/model/register_model.dart';
-import 'package:ppkd_b_3/preference/shared_preference.dart';
+import 'package:ppkd_b_3/tugas_11/utils/preference/shared_preference.dart';
 import 'package:ppkd_b_3/tugas_15/api/register_user.dart';
 import 'package:ppkd_b_3/tugas_15/model/register_model.dart';
 
@@ -44,10 +42,9 @@ class _PostApiScreenState extends State<PostApiScreen> {
       return;
     }
     try {
-      final result = await AuthenticationAPI.registerUser(
+      final result = await RegistrationAPI.loginUser(
         email: email,
         password: password,
-        name: name,
       );
       setState(() {
         user = result;
@@ -55,7 +52,7 @@ class _PostApiScreenState extends State<PostApiScreen> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text("Pendaftaran berhasil")));
-      PreferenceHandler.saveToken(user?.data?.token.toString() ?? "");
+      Preference.saveToken(user?.data.token.toString() ?? "");
       print(user?.toJson());
     } catch (e) {
       print(e);
@@ -196,18 +193,18 @@ class _PostApiScreenState extends State<PostApiScreen> {
                   ),
                   onPressed: () {
                     // Navigate to MeetLima screen menggunakan pushnamed
-                    Navigator.pushNamed(context, "/meet_2");
+                    Navigator.pushNamed(context, "/login");
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(
-                        "assets/images/icon_google.png",
-                        height: 16,
-                        width: 16,
-                      ),
+                      // Image.asset(
+                      //   "assets/images/icon_google.png",
+                      //   height: 16,
+                      //   width: 16,
+                      // ),
                       width(4),
-                      Text("Google"),
+                      Text("Login"),
                     ],
                   ),
                 ),
@@ -251,7 +248,7 @@ class _PostApiScreenState extends State<PostApiScreen> {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
+          image: AssetImage("assets/images/Wattpad.jpg"),
           fit: BoxFit.cover,
         ),
       ),

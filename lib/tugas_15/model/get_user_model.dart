@@ -8,6 +8,7 @@ String getUserModelToJson(GetUserModel15 data) => json.encode(data.toJson());
 class GetUserModel15 {
   String? message;
   Data? data;
+  
 
   GetUserModel15({this.message, this.data});
 
